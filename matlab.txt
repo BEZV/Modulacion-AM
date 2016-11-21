@@ -1,0 +1,63 @@
+Ac= input('Ingrese la amplitud de la portadora:  ');
+Am= input('Ingrese la amplitud del mensaje:  ');
+fc= input('Ingrese la frecuencia de la portadora fc>fm:  '); %fc debe ser 10 veces mayor a fm
+fm= input('Ingrese la frecuencia del mensaje:  ');
+t=  input('Ingrese el tiempo:  ');
+tf= linspace (t,-t);
+Wc= 2*(pi*fc);
+Wm= 2*pi*fm;
+y1= cos(Wc*tf);
+y2= cos(Wm*tf);
+y11= Ac*y1; 
+y22=Am*y2;
+u= Am/Ac;   
+eq=(1+u.*y22).*(Ac.*y11);
+subplot(311);
+plot(tf,y22);
+xlabel('Tiempo');
+ylabel('Amplitud');
+title('Señal del Mensaje')
+
+subplot(312)
+plot(tf,y11);
+xlabel('Tiempo');
+ylabel('Amplitud');
+title('Señal De Portadora');
+
+subplot(313);
+plot(tf,eq);
+plot(tf,eq,'r');
+xlabel('Tiempo');
+ylabel('Amplitud');
+title('Señal Modulada');
+
+%RECURSOS
+%https://electrosome.com/am-generation-matlab/
+
+%BASES
+%Ac=input('enter carrier signal amplitude');
+%Am=input('enter message signal amplitude');
+%fc=input('enter carrier frequency');
+%fm=input('enter message frequency');% fm<fc
+%m=input('enter modulation index');
+%t=input('enter time period');
+%t1=linspace(0,t,1000);
+%y1=sin(2*pi*fm*t1); % message signal
+%y2=sin(2*pi*fc*t1); % carrier signal
+%eq=(1+m.*y1).*(Ac.*y2);
+%subplot(311);
+%plot(t1,y1);
+%xlabel('Time');
+%ylabel('Amplitude');
+%title('Message signal')
+%subplot(312)
+%plot(t1,y2);
+%xlabel('Time');
+%ylabel('Amplitude');
+%title('Carrier signal');
+%subplot(313);
+%plot(t1,eq);
+%plot(t1,eq,'r');
+%xlabel('Time');
+%ylabel('Amplitude');
+%title('Modulated signal');
